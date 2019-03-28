@@ -23,8 +23,8 @@
               <small>{{ categoria.descricao }}</small>
             </td>
             <td align="center">
-              <button pButton type="button" [routerLink]="[12, 'edit']" class="ui-button-danger mr-2" icon="pi pi-trash"></button>
-              <button pButton type="button" (click)="alert('excluir')" label="Excluir"></button>
+              <button pButton type="button" [routerLink]="[categoria.id, 'edit']" class="mr-2" label="Editar"></button>
+              <button pButton type="button" (click)="deleteCategoria(categoria)" icon="pi pi-trash" class="ui-button-danger"></button>
             </td>
         </tr>
     </ng-template>
