@@ -1,3 +1,33 @@
-<p>
-  categoria-lista works!
-</p>
+<p-breadcrumb [style]="{marginBottom: '15px'}" [model]="items"></p-breadcrumb>
+
+<p-panel >
+  
+  <p-header>
+    <div class="ui-helper-clearfix">
+        <span class="ui-panel-title" style="font-size:16px;display:inline-block;margin-top:2px">{{ titlePanel }}</span>
+        <p-button routerLink="new" label="CATEGORIA" style="float:right" icon="pi pi-plus"></p-button>
+    </div>
+  </p-header>
+  
+  <p-table [value]="categorias">
+    <ng-template pTemplate="header">
+        <tr>
+            <th colspan="2">Categoria</th>
+            <th style="text-align:center">Ações</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-categoria>
+        <tr>
+            <td colspan="2"> 
+              <strong>{{ categoria.nome }}</strong><br>
+              <small>{{ categoria.descricao }}</small>
+            </td>
+            <td align="center">
+              <button pButton type="button" [routerLink]="[12, 'edit']" class="ui-button-danger mr-2" icon="pi pi-trash"></button>
+              <button pButton type="button" (click)="alert('excluir')" label="Excluir"></button>
+            </td>
+        </tr>
+    </ng-template>
+  </p-table>
+
+</p-panel>
