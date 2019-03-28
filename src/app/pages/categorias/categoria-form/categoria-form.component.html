@@ -1,3 +1,43 @@
-<p>
-  categoria-form works!
-</p>
+<p-breadcrumb [style]="{marginBottom: '15px'}" [model]="items"></p-breadcrumb>
+
+<p-panel >
+  
+  <p-header>
+    <div class="ui-helper-clearfix">
+        <span class="ui-panel-title" style="font-size:16px;display:inline-block;margin-top:2px">{{ titlePanel }}</span>
+        <p-button routerLink="/categorias" label="<< VOLTAR" style="float:right"></p-button>
+    </div>
+  </p-header>
+
+  <form [formGroup]="categoriaForm" (submit)="submitForm()">
+    <div class="ui-g ui-fluid">
+        <div class="ui-g-12 ui-md-8">
+            <label for="nome">Nome</label>
+            <div class="ui-inputgroup">
+                <input type="text" class="form-control" pInputText id="nome" formControlName="nome">  
+            </div>
+            <div class="text-danger" *ngIf="categoriaForm.get('nome').invalid && categoriaForm.get('nome').touched">   
+              <div *ngIf="categoriaForm.get('nome').errors.required">*Campo obrigatório</div>
+              <div *ngIf="categoriaForm.get('nome').errors.minlength">*Campo deve ter no mínimo 2 caracteres</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="ui-g ui-fluid">
+        <div class="ui-g-12 ui-md-8">
+            <label for="descricao">Descrição</label>
+            <div class="ui-inputgroup">
+                <textarea rows="5" pInputTextarea class="form-control" formControlName="descricao" id="descricao"></textarea>     
+            </div>
+        </div>
+    </div>
+
+    <div class="ui-g ui-fluid">
+        <div class="ui-g-12 ui-md-8">
+            <button [disabled]= "submittingForm || categoriaForm.invalid" pButton type="submit" label="Salvar" class="ui-button-success"></button>
+        </div>
+    </div>
+
+  </form>
+
+</p-panel>
